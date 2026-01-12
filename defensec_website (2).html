@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DefenSec Conference 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: #0a0e27;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4a90ff;
+        }
+
+        .register-btn {
+            background: #4a90ff;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #3a7ae0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1e47 100%);
+            color: white;
+            padding: 5rem 5%;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -10%;
+            top: 0;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(74, 144, 255, 0.15) 0%, transparent 70%);
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(74, 144, 255, 0.03) 10px, rgba(74, 144, 255, 0.03) 20px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(74, 144, 255, 0.03) 10px, rgba(74, 144, 255, 0.03) 20px);
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .sponsor-logos {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .sponsor-logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow: hidden;
+        }
+
+        .sponsor-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            color: #e0e0e0;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #c0c0c0;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: white;
+            color: #0a0e27;
+        }
+
+        /* About Section */
+        .about {
+            background: #f5f7fa;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #4a90ff;
+        }
+
+        .about-text {
+            max-width: 900px;
+            margin: 3rem auto 2rem;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .learn-more {
+            color: #4a90ff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .learn-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 5%;
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #f8f9fb;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #d9e8ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: #4a90ff;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card a {
+            color: #4a90ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .feature-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Organizers Section */
+        .organizers {
+            background: white;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .organizers h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .organizers h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #4a90ff;
+        }
+
+        .organizer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .organizer-card {
+            background: #f8f9fb;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .organizer-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .org-logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .organizer-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .organizer-card .subtitle {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .organizer-card p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #4a90ff 0%, #3a70d0 100%);
+            color: white;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: #4a90ff;
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0e27;
+            color: white;
+            padding: 4rem 5%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #b0b0b0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #4a90ff;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .sponsors-section {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid #1a1e47;
+        }
+
+        .sponsors-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .sponsor-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .sponsor-item {
+            width: 200px;
+            height: 100px;
+            background: #1a1e47;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow: hidden;
+        }
+
+        .sponsor-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features,
+            .organizer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 L20 30 L20 70 L50 90 L80 70 L80 30 Z" stroke="#4a90ff" stroke-width="4" fill="none" />
+                <circle cx="50" cy="50" r="15" fill="#4a90ff" />
+            </svg>
+            <div>
+                <div style="font-size: 1.3rem;">DefenSec</div>
+                <div style="font-size: 0.7rem; font-weight: 400; letter-spacing: 2px;">CONFERENCE</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <!-- <li><a href="#about">About</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#committee">Committee</a></li>
+            <li><a href="#register" class="register-btn">Register</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="sponsor-logos">
+                <div class="sponsor-logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%231a1e47'/%3E%3Ctext x='50' y='60' text-anchor='middle' fill='white' font-size='20' font-weight='bold'%3ESNDT%3C/text%3E%3C/svg%3E"
+                        alt="SNDT Women's University">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cdefs%3E%3ClinearGradient id='vgrad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%233b82f6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='10,5 30,5 20,20 5,20' fill='%23ef4444'/%3E%3Cpolygon points='30,5 50,5 45,20 20,20' fill='%23a855f7'/%3E%3Cpolygon points='5,20 20,20 15,35 5,40' fill='%235b21b6'/%3E%3Cpolygon points='20,20 45,20 40,40 15,35' fill='%236366f1'/%3E%3Ctext x='65' y='35' font-family='Arial' font-size='24' font-weight='300' fill='url(%23vgrad)'%3Evulnuris%3C/text%3E%3C/svg%3E"
+                        alt="Vulnuris">
+                </div>
+            </div>
+            <h1>DefenSec 2026</h1>
+            <h2>Virtual International Conference</h2>
+            <p>Cyber Resilience: The Next Era of Defense</p>
+            <a href="#register" class="hero-btn">Register Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>DefenSec 2026</h2>
+        <p class="about-text">
+            DefenSec Conference is a flagship event that brings together over 500 professionals, researchers, and
+            students to discuss cutting - edge cybersecurity trends and solutions.It provides a platform for thought
+            leaders to share their insights and for participants to engage in skill - building activities and networking
+            opportunities.
+        </p>
+        <a href="#" class="learn-more">Learn more about the conference →</a>
+    </section>
+
+    <!-- Features Section -->
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
+                </svg>
+            </div>
+            <h3>Keynote Speakers</h3>
+            <a href="#speakers">Meet Our Speakers</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                </svg>
+            </div>
+            <h3>Panel Discussions</h3>
+            <a href="#speakers">Meet Our Speakers</a>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                </svg>
+            </div>
+            <h3>Fire-Side-Chat</h3>
+            <a href="#schedule">View Schedule</a>
+        </div>
+    </div>
+
+    <!-- Organizers Section -->
+    <section class="organizers" id="organizers">
+        <h2>Organized By</h2>
+        <div class="organizer-grid">
+            <div class="organizer-card">
+                <div class="organizer-header">
+                    <div class="org-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%231a1e47'/%3E%3Ctext x='50' y='60' text-anchor='middle' fill='white' font-size='18' font-weight='bold'%3ESNDT%3C/text%3E%3C/svg%3E"
+                            alt="SNDT" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div>
+                        <h3>SNDT Women's University</h3>
+                        <p class="subtitle">PG Department of Computer Science</p>
+                    </div>
+                </div>
+                <p>Founded in 1916, SNDT Women's University is the first women's university in India, dedicated to
+                    empowering women through education. The PG Department of Computer Science offers advanced programs
+                    and fosters innovation and technical excellence.</p>
+                <a href="#" class="learn-more">Learn more →</a>
+            </div>
+
+            <div class="organizer-card">
+                <div class="organizer-header">
+                    <div class="org-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Cdefs%3E%3ClinearGradient id='vgrad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%233b82f6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='10,5 30,5 20,20 5,20' fill='%23ef4444'/%3E%3Cpolygon points='30,5 50,5 45,20 20,20' fill='%23a855f7'/%3E%3Cpolygon points='5,20 20,20 15,35 5,40' fill='%235b21b6'/%3E%3Cpolygon points='20,20 45,20 40,40 15,35' fill='%236366f1'/%3E%3Ctext x='65' y='35' font-family='Arial' font-size='24' font-weight='300' fill='url(%23vgrad)'%3Evulnuris%3C/text%3E%3C/svg%3E"
+                            alt="Vulnuris" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div>
+                        <h3>Vulnuris</h3>
+                        <p class="subtitle">Cybersecurity Solutions</p>
+                    </div>
+                </div>
+                <p>Vulnuris (formerly Newton's Apple), a cybersecurity firm founded in 2017, provides top-tier security
+                    solutions to businesses worldwide. Our expert team serves industries like IT, Healthcare, Fintech,
+                    Banking, and Manufacturing.</p>
+                <a href="#" class="learn-more">Learn more →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="register">
+        <h2>Join Us at DefenSec 2026</h2>
+        <p>Be part of the premier cybersecurity conference bringing together researchers, industry experts, and
+            practitioners.</p>
+        <a href="#" class="cta-btn">Register Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 L20 30 L20 70 L50 90 L80 70 L80 30 Z" stroke="#4a90ff" stroke-width="4"
+                            fill="none" />
+                        <circle cx="50" cy="50" r="15" fill="#4a90ff" />
+                    </svg>
+                    <div style="margin-left: 10px;">
+                        <div style="font-size: 1.3rem; font-weight: bold;">DefenSec</div>
+                        <div style="font-size: 0.7rem; letter-spacing: 2px;">CONFERENCE</div>
+                    </div>
+                </div>
+                <p>Virtual International Conference on AI/ML & Defensive Security</p>
+                <p>January 16-18, 2026</p>
+                <p>Mumbai, India</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#about">About</a>
+                <a href="#">Themes</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#">Guidelines</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:conference@computersc.sndt.ac.in">conference@computersc.ac.in</a>
+
+                <a href="mailto:mrunal.s@cyberjarvis.com">mrunal.s@cyberjarvis.com</a>
+                <!-- <a href="tel:+917798313762">+91-7798313762</a> -->
+                <a href="#">sndt.ac.in/media/defensec2026</a>
+                <a href="#">defensec.cyberjarvis.space</a>
+            </div>
+
+            <div class="footer-section" id="committee">
+                <h3>Organized By</h3>
+                <p style="color: white; font-weight: 600;">SNDT Women's University</p>
+                <p>PG Dept. of Computer Science</p>
+                <p style="color: white; font-weight: 600; margin-top: 1rem;">Vulnuris</p>
+                <p>Cybersecurity Solutions</p>
+            </div>
+        </div>
+
+        <div class="sponsors-section">
+            <h3>Our Sponsors</h3>
+            <div class="sponsor-grid">
+                <div class="sponsor-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 150'%3E%3Crect width='400' height='150' fill='%23000000'/%3E%3Ccircle cx='100' cy='75' r='50' fill='%2315394d' opacity='0.8'/%3E%3Ccircle cx='100' cy='75' r='40' fill='none' stroke='%2300d4ff' stroke-width='3'/%3E%3Ccircle cx='100' cy='75' r='30' fill='none' stroke='%2300d4ff' stroke-width='2' opacity='0.6'/%3E%3Ccircle cx='100' cy='75' r='20' fill='none' stroke='%2300d4ff' stroke-width='2' opacity='0.4'/%3E%3Cpath d='M 100 55 L 105 65 L 95 65 Z' fill='%2300d4ff'/%3E%3Crect x='98' y='65' width='4' height='20' fill='%2300d4ff'/%3E%3Ctext x='220' y='65' font-family='Arial' font-size='32' font-weight='bold' fill='%2300d4ff'%3ESANA%3C/text%3E%3Ctext x='220' y='95' font-family='Arial' font-size='32' font-weight='bold' fill='%2300d4ff'%3ECYBER%3C/text%3E%3Ctext x='220' y='125' font-family='Arial' font-size='32' font-weight='bold' fill='%2300d4ff'%3EFORENSICS%3C/text%3E%3C/svg%3E"
+                        alt="Sana Cyber Forensics">
+                </div>
+                <div class="sponsor-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 150'%3E%3Crect width='300' height='150' fill='%23002244'/%3E%3Cpath d='M 60 40 L 80 30 L 100 40 L 80 50 Z' fill='%2300d4ff'/%3E%3Cpath d='M 60 70 L 80 60 L 100 70 L 80 80 Z' fill='%2300d4ff'/%3E%3Cpath d='M 65 55 L 75 60 L 65 65 Z' fill='%236a9fb5'/%3E%3Cpath d='M 85 55 L 95 60 L 85 65 Z' fill='%236a9fb5'/%3E%3Ctext x='80' y='100' text-anchor='middle' font-family='Arial' font-size='18' font-weight='bold' fill='white'%3EWB%3C/text%3E%3Ctext x='150' y='80' text-anchor='middle' font-family='Arial' font-size='16' font-weight='bold' fill='white'%3EWhite Bond%3C/text%3E%3Ctext x='150' y='100' text-anchor='middle' font-family='Arial' font-size='16' font-weight='bold' fill='white'%3EAssociates%3C/text%3E%3C/svg%3E"
+                        alt="White Bond Associates">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
